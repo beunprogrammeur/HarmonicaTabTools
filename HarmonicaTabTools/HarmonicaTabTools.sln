@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harmonica.Core", "Harmonica.Core\Harmonica.Core.csproj", "{12F435A6-3608-4BFA-9C47-43A1277D22AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harmonica.Core.UnitTests", "Harmonica.Core.UnitTests\Harmonica.Core.UnitTests.csproj", "{159744C7-6BC6-4B27-AF2F-2ABBA2A1E01C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12F435A6-3608-4BFA-9C47-43A1277D22AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12F435A6-3608-4BFA-9C47-43A1277D22AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12F435A6-3608-4BFA-9C47-43A1277D22AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12F435A6-3608-4BFA-9C47-43A1277D22AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{159744C7-6BC6-4B27-AF2F-2ABBA2A1E01C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{159744C7-6BC6-4B27-AF2F-2ABBA2A1E01C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{159744C7-6BC6-4B27-AF2F-2ABBA2A1E01C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{159744C7-6BC6-4B27-AF2F-2ABBA2A1E01C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F1337C37-DE3A-4618-9F1C-BC48FDA7AF71}
+	EndGlobalSection
+EndGlobal
