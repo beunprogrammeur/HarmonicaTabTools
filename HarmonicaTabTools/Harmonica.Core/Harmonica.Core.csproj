@@ -9,6 +9,15 @@
     <InternalsVisibleTo Include="Harmonica.Core.UnitTests" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="Tunings\PowerBender_Lucky13_C.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tunings\Richter_Eb.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Tunings\Richter_Ab.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Tunings\Richter_C.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

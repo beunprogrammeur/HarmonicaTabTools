@@ -22,13 +22,13 @@ namespace Harmonica.Core.UnitTests
         public void Given_MidiUtilities_ConvertMidiPitchToNote_Returns_Correct_Note(int pitch, Semitone expectedSemitone, int expectedOctave)
         {
             // Act
-            Note note = MidiUtilities.ConvertMidiPitchToNote(pitch);
+            (Semitone semitone, int octave) = MidiConversionUtilities.ConvertMidiPitchToNote(pitch);
 
             // Assert
             Assert.Multiple(() =>
             {
-                Assert.That(note.Octave, Is.EqualTo(expectedOctave));
-                Assert.That(note.Semitone, Is.EqualTo(expectedSemitone));
+                Assert.That(octave, Is.EqualTo(expectedOctave));
+                Assert.That(semitone, Is.EqualTo(expectedSemitone));
             });
         }
 
@@ -45,7 +45,7 @@ namespace Harmonica.Core.UnitTests
         public void Given_MidiUtilities_ConvertMidiNoteToPitch_Returns_Correct_Note(int expectedPitch, Semitone semitone, int octave)
         {
             // Act
-            int pitch = MidiUtilities.ConvertNoteToMidiPitch(semitone, octave);
+            int pitch = MidiConversionUtilities.ConvertNoteToMidiPitch(semitone, octave);
 
             // Assert
             Assert.That(pitch, Is.EqualTo(expectedPitch));

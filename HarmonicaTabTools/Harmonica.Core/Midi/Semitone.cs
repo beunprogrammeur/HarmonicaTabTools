@@ -2,6 +2,7 @@
 {
     public enum Semitone
     {
+        Unknown = 0,
         C = 1,
         CSharp = 2,
         DFlat = 2,

@@ -1,0 +1,56 @@
+﻿<HarmonicaTuning tuning="PowerBender" key="C" version="1.0">
+  <hole id="A" blow="C3" draw="D3">
+    <technique>overblow</technique>
+    <technique>drawbend1</technique>
+  </hole>
+  <hole id="B" blow="E3" draw="G3">
+    <technique>drawbend1</technique>
+    <technique>drawbend2</technique>
+  </hole>
+  <hole id="C" blow="G3" draw="B3">
+    <technique>drawbend1</technique>
+    <technique>drawbend2</technique>
+    <technique>drawbend3</technique>
+  </hole>
+  <hole id="1" blow="C4" draw="D4">
+    <technique>overblow</technique>
+    <technique>drawbend1</technique>
+  </hole>
+  <hole id="2" blow="E4" draw="G4">
+    <technique>drawbend1</technique>
+    <technique>drawbend2</technique>
+  </hole>
+  <hole id="3" blow="G4" draw="B4">
+    <technique>drawbend1</technique>
+    <technique>drawbend2</technique>
+    <technique>drawbend3</technique>
+  </hole>
+  <hole id="4" blow="C5" draw="D5">
+    <technique>drawbend1</technique>
+  </hole>
+  <hole id="5" blow="D5" draw="E5">
+    <technique>drawbend1</technique>
+  </hole>
+  <hole id="6" blow="F5" draw="G5">
+    <technique>drawbend1</technique>
+    <technique>overblow</technique>
+  </hole>
+  <hole id="7" blow="A5" draw="B5">
+    <technique>drawbend1</technique>
+  </hole>
+  <hole id="8" blow="C6" draw="D6">
+    <technique>drawbend1</technique>
+    <technique>overblow</technique>
+  </hole>
+  <hole id="9" blow="E6" draw="G6">
+    <technique>drawbend1</technique>
+    <technique>drawbend2</technique>
+    <technique>overblow</technique>
+  </hole>
+  <hole id="10" blow="A6" draw="C7">
+    <technique>drawbend1</technique>
+    <technique>drawbend2</technique>
+    <technique>overblow</technique>
+  </hole>
+</HarmonicaTuning>
+

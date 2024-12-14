@@ -2,14 +2,14 @@
 
 namespace Harmonica.Core.Tuning
 {
-    internal class TuningConfiguration
+    public class TuningConfiguration
     {
         private readonly Dictionary<string, HarmonicaHoleConfiguration> _holes;
         public HarmonicaTuning Tuning { get; init; }
         public Semitone Key { get; init; }
         public bool HasSlider { get; init; }
 
-        public IReadOnlyDictionary<string, HarmonicaHoleConfiguration> Holes => _holes;
+        internal IReadOnlyDictionary<string, HarmonicaHoleConfiguration> Holes => _holes;
 
         internal TuningConfiguration()
         {
@@ -25,12 +25,12 @@ namespace Harmonica.Core.Tuning
 
         internal void AddHole(HarmonicaHoleConfiguration hole)
         {
-            if (_holes.TryGetValue(hole.HoleIdentifier, out HarmonicaHoleConfiguration preExistingHole))
+            if (_holes.TryGetValue(hole.Identifier, out HarmonicaHoleConfiguration preExistingHole))
             {
                 throw new InvalidOperationException("hole already exists on this configuration");
             }
 
-            _holes[hole.HoleIdentifier] = hole;
+            _holes[hole.Identifier] = hole;
         }
     }
 }

@@ -1,31 +1,42 @@
-﻿using Harmonica.Core.Tuning;
+﻿using Harmonica.Core.Midi;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
-namespace Harmonica.Core.Midi
+namespace Harmonica.Core.Tuning
 {
-    internal static class MidiUtilities
+    public static partial class TuningLoader
     {
-        public static int ConvertNoteToMidiPitch(Semitone semitone, int octave)
+        /// <summary>
+        /// Transposes the key of the tuning configuration up or down
+        /// </summary>
+        /// <param name="configuration">configuration to transpose (copy)</param>
+        /// <param name="semitones">the amount of semitones to transpose (negative to transpose down)</param>
+        /// <returns>a new transposed tuning configuration</returns>
+        public static TuningConfiguration Transpose(TuningConfiguration configuration, int semitones)
         {
-            const int C4MidiNoteNumber = 60;
-            const int semitonesPerOctave = 12;
+            TuningConfiguration newConfiguration = new TuningConfiguration(
+                configuration.Tuning,
+                TransposeSemitone(configuration.Key, semitones),
+                configuration.HasSlider);
 
-            int baseNote = C4MidiNoteNumber + (octave - 4) * semitonesPerOctave;
+            foreach ((string identifier, HarmonicaHoleConfiguration holeConfig) in configuration.Holes)
+            {
+                HarmonicaHoleConfiguration newHoleConfig = new(identifier,
+                    new Note(holeConfig.BlowNote.MidiPitch + semitones),
+                    new Note(holeConfig.DrawNote.MidiPitch + semitones),
+                    holeConfig.SupportedTechniques
+                    );
+                newConfiguration.AddHole(newHoleConfig);
+            }
 
-            int midiNoteNumber = baseNote + (int)semitone - 1;
-            return midiNoteNumber;
+            return newConfiguration;
         }
 
-        public static Note ConvertMidiPitchToNote(int pitch)
+        internal static Semitone TransposeSemitone(Semitone semitone, int steps)
         {
-            const int C4MidiNoteNumber = 60; 
-            const int semitonesPerOctave = 12; 
-            int octave = (pitch / semitonesPerOctave) - 1; 
-            int semitoneValue = (pitch % semitonesPerOctave) + 1; 
-            Semitone semitone = (Semitone)semitoneValue; 
-            return new Note(semitone, octave);
+            int midiPitch = MidiConversionUtilities.ConvertNoteToMidiPitch(semitone, 4);
+            return MidiConversionUtilities.ConvertMidiPitchToNote(midiPitch + steps).Item1;
         }
-
 
         public static TuningConfiguration LoadTuningConfiguration(string filepath)
         {
@@ -40,6 +51,7 @@ namespace Harmonica.Core.Midi
             switch (tuningVersion)
             {
                 default:
+                    throw new ArgumentOutOfRangeException("version is unsupported");
                 case "1.0":
                     return LoadTuningConfigurationV1(tuning);
             }
@@ -50,27 +62,25 @@ namespace Harmonica.Core.Midi
             string tuning = xml.Attribute("tuning")?.Value ?? string.Empty;
             string key = xml.Attribute("key")?.Value ?? string.Empty;
 
-            TuningConfiguration harmonicaConfiguration = new(TuningFromString(tuning), SemitoneFromString(key));
+            TuningConfiguration tuningConfiguration = new(TuningFromString(tuning), SemitoneFromString(key));
 
-            foreach(XElement hole in xml.Elements("hole"))
+            foreach (XElement hole in xml.Elements("hole"))
             {
-                string id = hole.Attribute("id")?.Value ?? string.Empty;
+                string identifier = hole.Attribute("id").Value;
+                Note blowNote = NoteFromString(hole.Attribute("blow").Value);
+                Note drawNote = NoteFromString(hole.Attribute("draw").Value);
 
-                HarmonicaHoleConfiguration holeConfiguration = new(id);
-                harmonicaConfiguration.AddHole(holeConfiguration);
+                PlayingTechnique[] techniques = hole
+                    .Elements("technique")
+                    .Select(x => PlayingTechniqueFromString(x.Value))
+                    .ToArray();
 
-                foreach(XElement techniqueType in hole.Elements())
-                {
-                    PlayingTechnique playingTechnique = PlayingTechniqueFromString(techniqueType.Name.ToString());
-                    int octave = int.Parse(techniqueType.Attribute("octave").Value);
-                    Semitone semitone = SemitoneFromString(techniqueType.Attribute("semitone").Value);
-                    int pitch = ConvertNoteToMidiPitch(semitone, octave);
+                HarmonicaHoleConfiguration holeConfiguration = new(identifier, blowNote, drawNote, techniques);
 
-                    holeConfiguration.Add(pitch, playingTechnique);
-                }
+                tuningConfiguration.AddHole(holeConfiguration);
             }
 
-            return harmonicaConfiguration;
+            return tuningConfiguration;
         }
 
         private static Semitone SemitoneFromString(string semitone) => semitone switch
@@ -94,6 +104,24 @@ namespace Harmonica.Core.Midi
             "B" => Semitone.B,
             _ => throw new ArgumentOutOfRangeException(semitone),
         };
+
+
+        [GeneratedRegex(@"(\w+)(\d)", RegexOptions.Compiled)]
+        private static partial Regex XmlNoteRegex();
+
+        private static Note? NoteFromString(string input)
+        {
+            Match match = XmlNoteRegex().Match(input);
+            if (match.Success &&
+                match.Groups.Count == 3 &&
+                Enum.TryParse(match.Groups[1].Value, true, out Semitone semitone) &&
+                int.TryParse(match.Groups[2].Value, out int octave))
+            {
+                return new Note(semitone, octave);
+            }
+
+            return null;
+        }
 
         private static HarmonicaTuning TuningFromString(string tuning) => tuning switch
         {
