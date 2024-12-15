@@ -12,5 +12,6 @@
         FontSize="10pt"
         IsReadOnly="{Binding IsReadOnly}"
         Document="{Binding Document}"
+        ShowLineNumbers="True"
         />
 </UserControl>

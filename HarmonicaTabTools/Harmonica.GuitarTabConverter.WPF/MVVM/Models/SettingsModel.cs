@@ -1,4 +1,7 @@
-﻿using System.Xml.Linq;
+﻿using System.IO;
+using System.Reflection;
+using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Harmonica.GuitarTabConverter.WPF.MVVM.Models
 {
@@ -12,6 +15,22 @@ namespace Harmonica.GuitarTabConverter.WPF.MVVM.Models
             HarmonicaTuningLocation,
             LastUsedHarmonicaTuning,
             LastUsedHarmonicaKey
+        }
+
+        public SettingsModel()
+        {
+            if (!Directory.Exists(GetSetting(Setting.HarmonicaTuningLocation)))
+            {
+                FolderBrowserDialog dialog = new FolderBrowserDialog()
+                {
+                    SelectedPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    UseDescriptionForTitle = true,
+                    Description = "Directory containing the harmonica tunings"
+                };
+
+                dialog.ShowDialog();
+                SetSetting(Setting.HarmonicaTuningLocation, dialog.SelectedPath);
+            }
         }
 
         public override void Dispose()

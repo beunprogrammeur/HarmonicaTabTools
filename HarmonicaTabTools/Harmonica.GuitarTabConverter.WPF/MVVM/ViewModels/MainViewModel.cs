@@ -27,9 +27,9 @@ namespace Harmonica.GuitarTabConverter.WPF.MVVM.ViewModels
             };
 
             _settingsModel = new SettingsModel();
-            _tablatureModel = new TablatureModel(_settingsModel);
             _configurationModel = new ConfigurationModel(_settingsModel);
-            ConfigurationViewModel = new ConfigurationViewModel(dispatcher, _configurationModel);
+            _tablatureModel = new TablatureModel(_configurationModel);
+            ConfigurationViewModel = new ConfigurationViewModel(dispatcher, _configurationModel, _settingsModel);
         }
 
         public override void Dispose()
@@ -46,7 +46,11 @@ namespace Harmonica.GuitarTabConverter.WPF.MVVM.ViewModels
 
         private void OnConvert()
         {
-            OutputTablatureViewModel.Document.Text = _tablatureModel.Convert(InputTablatureViewModel.Document.Text);
+            OutputTablatureViewModel.Document.Text = _tablatureModel.Convert(InputTablatureViewModel.Document.Text,
+                    ConfigurationViewModel.SelectedHarmonicaKey,
+                    ConfigurationViewModel.SelectedHarmonicaTuning,
+                    ConfigurationViewModel.SelectedGuitarTuning);
+
             OutputTablatureViewModel.IsInFocus = true;
         }
     }

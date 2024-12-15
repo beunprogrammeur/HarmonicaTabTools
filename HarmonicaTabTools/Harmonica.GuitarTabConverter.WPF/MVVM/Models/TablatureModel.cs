@@ -1,16 +1,33 @@
-﻿namespace Harmonica.GuitarTabConverter.WPF.MVVM.Models
+﻿using Harmonica.Core.Tuning;
+using Harmonica.GuitarTabConverter.Core.Guitar;
+using Harmonica.GuitarTabConverter.Core;
+using Harmonica.Core.Midi;
+
+namespace Harmonica.GuitarTabConverter.WPF.MVVM.Models
 {
     internal class TablatureModel : BaseModel
     {
-        private readonly SettingsModel _settingsModel;
+        private readonly ConfigurationModel _configurationModel;
 
-        public TablatureModel(SettingsModel settingsModel)
+        public TablatureModel(ConfigurationModel configurationModel)
         {
-            _settingsModel = settingsModel;
+            _configurationModel = configurationModel;
         }
-        public string Convert(string tablature)
+        public string Convert(string tablature, 
+            Semitone harmonicaKey, HarmonicaTuning harmonicaTuning, StringConfiguration guitarConfiguration)
         {
-            return tablature;
+            HarmonicaTuningConfiguration harmonicaTuningConfiguration = _configurationModel
+                .GetHarmonicaTuningInKey(harmonicaKey, harmonicaTuning);
+
+            GuitarTuningConfiguration guitarTuning = _configurationModel.GetGuitarTuning(guitarConfiguration);
+
+            TabbingConfiguration configuration = new()
+            {
+                HarmonicaTuning = harmonicaTuningConfiguration,
+                GuitarTuning = guitarTuning
+            };
+
+            return Core.GuitarTabConverter.ConvertGuitarTab(configuration, tablature);
         }
     }
 }

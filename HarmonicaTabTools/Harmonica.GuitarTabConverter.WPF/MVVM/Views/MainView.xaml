@@ -8,14 +8,17 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="200"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
+        
+        <Button Grid.Row="0" Grid.Column="0" Command="{Binding ConvertCommand}">Convert</Button>
+        <local:ConfigurationView Grid.Row="0" Grid.Column="1" DataContext="{Binding ConfigurationViewModel}" />
+
 
         <TabControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="999">
             <TabItem Header="Input">
@@ -25,9 +28,5 @@
                 <local:TablatureView DataContext="{Binding OutputTablatureViewModel}" />
             </TabItem>
         </TabControl>
-        
-        
-        
-        <Button Grid.Row="0" Grid.Column="0" Command="{Binding ConvertCommand}">Convert</Button>
     </Grid>
 </UserControl>
