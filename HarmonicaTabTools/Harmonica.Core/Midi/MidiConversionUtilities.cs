@@ -1,6 +1,6 @@
 ﻿namespace Harmonica.Core.Midi
 {
-    internal static class MidiConversionUtilities
+    public static class MidiConversionUtilities
     {
         public static int ConvertNoteToMidiPitch(Semitone semitone, int octave)
         {

@@ -7,6 +7,7 @@
   </PropertyGroup>
   <ItemGroup>
     <InternalsVisibleTo Include="Harmonica.Core.UnitTests" />
+    <InternalsVisibleTo Include="Harmonica.GuitarTabConverter.Core.UnitTests" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Tunings\PowerBender_Lucky13_C.xml">

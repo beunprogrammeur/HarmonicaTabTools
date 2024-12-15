@@ -7,6 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harmonica.Core", "Harmonica
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harmonica.Core.UnitTests", "Harmonica.Core.UnitTests\Harmonica.Core.UnitTests.csproj", "{159744C7-6BC6-4B27-AF2F-2ABBA2A1E01C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harmonica.GuitarTabConverter.WPF", "Harmonica.GuitarTabConverter.WPF\Harmonica.GuitarTabConverter.WPF.csproj", "{DE5F2C55-8118-4CDD-B522-2E87A7C492C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harmonica.GuitarTabConverter.Core", "Harmonica.GuitarTabConverter.Core\Harmonica.GuitarTabConverter.Core.csproj", "{04917B9C-1D87-4B1E-B9ED-3334679AEE9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harmonica.GuitarTabConverter.Core.UnitTests", "Harmonica.GuitarTabConverter.Core.UnitTests\Harmonica.GuitarTabConverter.Core.UnitTests.csproj", "{0606AD2D-0AEC-4031-A6BC-99F8CF08BAA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harmonica.GuitarTabConverter.CLI", "Harmonica.GuitarTabConverter.CLI\Harmonica.GuitarTabConverter.CLI.csproj", "{1153A0EA-4164-4233-B21D-E28ABF059FFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +29,22 @@ Global
 		{159744C7-6BC6-4B27-AF2F-2ABBA2A1E01C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{159744C7-6BC6-4B27-AF2F-2ABBA2A1E01C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{159744C7-6BC6-4B27-AF2F-2ABBA2A1E01C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE5F2C55-8118-4CDD-B522-2E87A7C492C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE5F2C55-8118-4CDD-B522-2E87A7C492C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE5F2C55-8118-4CDD-B522-2E87A7C492C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE5F2C55-8118-4CDD-B522-2E87A7C492C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04917B9C-1D87-4B1E-B9ED-3334679AEE9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04917B9C-1D87-4B1E-B9ED-3334679AEE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04917B9C-1D87-4B1E-B9ED-3334679AEE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04917B9C-1D87-4B1E-B9ED-3334679AEE9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0606AD2D-0AEC-4031-A6BC-99F8CF08BAA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0606AD2D-0AEC-4031-A6BC-99F8CF08BAA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0606AD2D-0AEC-4031-A6BC-99F8CF08BAA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0606AD2D-0AEC-4031-A6BC-99F8CF08BAA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1153A0EA-4164-4233-B21D-E28ABF059FFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1153A0EA-4164-4233-B21D-E28ABF059FFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1153A0EA-4164-4233-B21D-E28ABF059FFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1153A0EA-4164-4233-B21D-E28ABF059FFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

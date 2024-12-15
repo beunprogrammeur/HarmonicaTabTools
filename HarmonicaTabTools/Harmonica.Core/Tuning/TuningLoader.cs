@@ -12,9 +12,9 @@ namespace Harmonica.Core.Tuning
         /// <param name="configuration">configuration to transpose (copy)</param>
         /// <param name="semitones">the amount of semitones to transpose (negative to transpose down)</param>
         /// <returns>a new transposed tuning configuration</returns>
-        public static TuningConfiguration Transpose(TuningConfiguration configuration, int semitones)
+        public static HarmonicaTuningConfiguration Transpose(HarmonicaTuningConfiguration configuration, int semitones)
         {
-            TuningConfiguration newConfiguration = new TuningConfiguration(
+            HarmonicaTuningConfiguration newConfiguration = new HarmonicaTuningConfiguration(
                 configuration.Tuning,
                 TransposeSemitone(configuration.Key, semitones),
                 configuration.HasSlider);
@@ -38,7 +38,7 @@ namespace Harmonica.Core.Tuning
             return MidiConversionUtilities.ConvertMidiPitchToNote(midiPitch + steps).Item1;
         }
 
-        public static TuningConfiguration LoadTuningConfiguration(string filepath)
+        public static HarmonicaTuningConfiguration LoadTuningConfiguration(string filepath)
         {
             if (!File.Exists(filepath))
             {
@@ -57,12 +57,12 @@ namespace Harmonica.Core.Tuning
             }
         }
 
-        private static TuningConfiguration LoadTuningConfigurationV1(XElement xml)
+        private static HarmonicaTuningConfiguration LoadTuningConfigurationV1(XElement xml)
         {
             string tuning = xml.Attribute("tuning")?.Value ?? string.Empty;
             string key = xml.Attribute("key")?.Value ?? string.Empty;
 
-            TuningConfiguration tuningConfiguration = new(TuningFromString(tuning), SemitoneFromString(key));
+            HarmonicaTuningConfiguration tuningConfiguration = new(TuningFromString(tuning), SemitoneFromString(key));
 
             foreach (XElement hole in xml.Elements("hole"))
             {

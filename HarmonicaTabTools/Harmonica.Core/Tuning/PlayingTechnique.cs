@@ -1,6 +1,6 @@
 ﻿namespace Harmonica.Core.Tuning
 {
-    internal enum PlayingTechnique
+    public enum PlayingTechnique
     {
         Unknown,
         Draw,

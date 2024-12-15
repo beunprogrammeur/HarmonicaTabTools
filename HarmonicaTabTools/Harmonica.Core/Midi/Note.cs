@@ -1,6 +1,6 @@
 ﻿namespace Harmonica.Core.Midi
 {
-    internal class Note 
+    public class Note 
     {
         public int MidiPitch { get; init; }
         public int Octave { get; init; }

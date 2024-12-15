@@ -2,7 +2,7 @@
 
 namespace Harmonica.Core.Tuning
 {
-    internal class HarmonicaHoleConfiguration
+    public class HarmonicaHoleConfiguration
     {
         private readonly Dictionary<PlayingTechnique, Note> _supportedNotes;
 

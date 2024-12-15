@@ -2,21 +2,21 @@
 
 namespace Harmonica.Core.Tuning
 {
-    public class TuningConfiguration
+    public class HarmonicaTuningConfiguration
     {
         private readonly Dictionary<string, HarmonicaHoleConfiguration> _holes;
         public HarmonicaTuning Tuning { get; init; }
         public Semitone Key { get; init; }
         public bool HasSlider { get; init; }
 
-        internal IReadOnlyDictionary<string, HarmonicaHoleConfiguration> Holes => _holes;
+        public IReadOnlyDictionary<string, HarmonicaHoleConfiguration> Holes => _holes;
 
-        internal TuningConfiguration()
+        internal HarmonicaTuningConfiguration()
         {
             _holes = [];
         }
 
-        internal TuningConfiguration(HarmonicaTuning tuning, Semitone key, bool hasSlider = false) : this()
+        internal HarmonicaTuningConfiguration(HarmonicaTuning tuning, Semitone key, bool hasSlider = false) : this()
         {
             Tuning = tuning;
             Key = key;
