@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="Harmonica.GuitarTabConverter.WPF.MVVM.Views.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Harmonica.GuitarTabConverter.WPF.MVVM.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <TabControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="999">
+            <TabItem Header="Input">
+                <local:TablatureView DataContext="{Binding InputTablatureViewModel}" />
+            </TabItem>
+            <TabItem Header="Output" IsSelected="{Binding OutputTablatureViewModel.IsInFocus}">
+                <local:TablatureView DataContext="{Binding OutputTablatureViewModel}" />
+            </TabItem>
+        </TabControl>
+        
+        
+        
+        <Button Grid.Row="0" Grid.Column="0" Command="{Binding ConvertCommand}">Convert</Button>
+    </Grid>
+</UserControl>

@@ -1,7 +1,6 @@
 ﻿using Harmonica.Core.Midi;
 using Harmonica.Core.Tuning;
 using Harmonica.GuitarTabConverter.Core.Guitar;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Harmonica.GuitarTabConverter.Core
 {
@@ -44,7 +43,7 @@ namespace Harmonica.GuitarTabConverter.Core
 
         public int GetPitchForGuitarString(GuitarString guitarString)
         {
-            if(GuitarTuning.StringConfiguration != StringConfiguration.Default)
+            if (GuitarTuning.StringConfiguration != StringConfiguration.Default)
             {
                 throw new NotImplementedException();
             }

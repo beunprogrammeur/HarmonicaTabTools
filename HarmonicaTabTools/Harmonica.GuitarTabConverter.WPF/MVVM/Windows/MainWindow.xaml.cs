@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Harmonica.GuitarTabConverter.WPF
+namespace Harmonica.GuitarTabConverter.WPF.MVVM.Windows
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
