@@ -29,7 +29,9 @@ namespace Harmonica.GuitarTabConverter.Core
                 PlayingTechnique.BlowBend1,
                 PlayingTechnique.BlowBend2,
                 PlayingTechnique.OverBlow,
-                PlayingTechnique.OverDraw);
+                PlayingTechnique.OverDraw,
+                PlayingTechnique.BlowSlider,
+                PlayingTechnique.DrawSlider);
 
             // The default string layout
             StringOrder.AddRange(
