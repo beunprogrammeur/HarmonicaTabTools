@@ -13,6 +13,6 @@
         MelodyMaker,
         NaturalMinor,
         HarmonicMinor,
-        Chromatic,
+        Solo,
     }
 }

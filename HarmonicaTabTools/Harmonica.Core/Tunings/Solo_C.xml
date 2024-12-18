@@ -1,0 +1,14 @@
+﻿<HarmonicaTuning tuning="Solo" key="C" hasSlider="true" version="1.0">
+  <hole id="1" blow="C4" draw="D4" />
+  <hole id="2" blow="E4" draw="F4" />
+  <hole id="3" blow="G4" draw="A4" />
+  <hole id="4" blow="C5" draw="B4" />
+  <hole id="5" blow="C5" draw="D5" />
+  <hole id="6" blow="E5" draw="F5" />
+  <hole id="7" blow="G5" draw="A5" />
+  <hole id="8" blow="C6" draw="B5" />
+  <hole id="9" blow="C6" draw="D6" />
+  <hole id="10" blow="E6" draw="F6" />
+  <hole id="11" blow="G6" draw="A6" />
+  <hole id="12" blow="C7" draw="B6" />
+</HarmonicaTuning>

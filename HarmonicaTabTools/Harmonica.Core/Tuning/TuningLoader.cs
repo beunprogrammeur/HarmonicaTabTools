@@ -61,8 +61,8 @@ namespace Harmonica.Core.Tuning
         {
             string tuning = xml.Attribute("tuning")?.Value ?? string.Empty;
             string key = xml.Attribute("key")?.Value ?? string.Empty;
-
-            HarmonicaTuningConfiguration tuningConfiguration = new(TuningFromString(tuning), SemitoneFromString(key));
+            bool.TryParse(xml.Attribute("hasSlider")?.Value ?? "false", out bool hasSlider);
+            HarmonicaTuningConfiguration tuningConfiguration = new(TuningFromString(tuning), SemitoneFromString(key), hasSlider);
 
             foreach (XElement hole in xml.Elements("hole"))
             {
@@ -70,10 +70,15 @@ namespace Harmonica.Core.Tuning
                 Note blowNote = NoteFromString(hole.Attribute("blow").Value);
                 Note drawNote = NoteFromString(hole.Attribute("draw").Value);
 
-                PlayingTechnique[] techniques = hole
+                List<PlayingTechnique> techniques = hole
                     .Elements("technique")
                     .Select(x => PlayingTechniqueFromString(x.Value))
-                    .ToArray();
+                    .ToList();
+
+                if (hasSlider)
+                {
+                    techniques.AddRange(PlayingTechnique.BlowSlider, PlayingTechnique.DrawSlider);
+                }
 
                 HarmonicaHoleConfiguration holeConfiguration = new(identifier, blowNote, drawNote, techniques);
 
@@ -136,7 +141,7 @@ namespace Harmonica.Core.Tuning
             "MelodyMaker" => HarmonicaTuning.MelodyMaker,
             "NaturalMinor" => HarmonicaTuning.NaturalMinor,
             "HarmonicMinor" => HarmonicaTuning.HarmonicMinor,
-            "Chromatic" => HarmonicaTuning.Chromatic,
+            "Solo" => HarmonicaTuning.Solo,
             _ => throw new ArgumentOutOfRangeException(tuning),
         };
 

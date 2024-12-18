@@ -213,6 +213,8 @@ namespace Harmonica.GuitarTabConverter.Core
             PlayingTechnique.BlowBend1 => $"[{identifier}']",
             PlayingTechnique.BlowBend2 => $"[{identifier}'']",
             PlayingTechnique.OverBlow => $"[{identifier}o]",
+            PlayingTechnique.BlowSlider => $"[<{identifier}]",
+            PlayingTechnique.DrawSlider => $"[<-{identifier}]",
             _ => $"[{configuration.UnknownNoteCharacter}]",
         };
 

@@ -70,6 +70,12 @@ namespace Harmonica.Core.Tuning
                         case PlayingTechnique.OverBlow:
                             _supportedNotes[technique] = new Note(DrawNote.MidiPitch + 1);
                             break;
+                        case PlayingTechnique.BlowSlider:
+                            _supportedNotes[technique] = new Note(BlowNote.MidiPitch + 1);
+                            break;
+                        case PlayingTechnique.DrawSlider:
+                            _supportedNotes[technique] = new Note(DrawNote.MidiPitch + 1);
+                            break;
                     }
                 }
             }

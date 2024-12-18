@@ -13,6 +13,9 @@
     <None Update="Tunings\PowerBender_Lucky13_C.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Tunings\Solo_C.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Tunings\Richter_Eb.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

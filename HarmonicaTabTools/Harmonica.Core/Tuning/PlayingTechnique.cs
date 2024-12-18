@@ -12,5 +12,7 @@
         BlowBend1,
         BlowBend2,
         OverBlow,
+        DrawSlider,
+        BlowSlider,
     }
 }
